@@ -19,12 +19,15 @@ spec:
           remediationAction: inform
           severity: high
           namespaceSelector:
+            exclude: ["kube-*", "openshift-*"]
+            include: ["*"]
           object-templates:
-            - complianceType: mustnothave
+            - complianceType: musthave
               objectDefinition:
                 apiVersion: security.openshift.io/v1
                 kind: SecurityContextConstraints
                 metadata:
-                  name: privileged
+                  name: no-privileged-container-scc
+                priority: 10 # make this scc win over privileged scc
                 allowPrivilegedContainer: true
                 allowPrivilegeEscalation: true
