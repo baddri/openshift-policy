@@ -1,0 +1,55 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-file-integrity-operator-scan
+  annotations:
+    policy.open-cluster-management.io/standards: NIST SP 800-53
+    policy.open-cluster-management.io/categories: CA Security Assessment and Authorization
+    policy.open-cluster-management.io/controls: CA-2 Security Assessments, CA-7 Continuous Monitoring
+spec:
+  remediationAction: inform
+  disabled: true
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: file-integrity-operator-scan
+        spec:
+          remediationAction: inform # will be overridden by remediationAction in parent policy
+          severity: high
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: fileintegrity.openshift.io/v1alpha1
+                kind: FileIntegrity
+                metadata:
+                  # TODO: Make sure the name is correct
+                  # name: example-fileintegrity
+                  namespace: openshift-file-integrity
+                spec:
+                  config:
+                    gracePeriod: 900
+                  nodeSelector:
+                    node-role.kubernetes.io/worker: ""
+                  tolerations:
+                  - effect: NoSchedule
+                    key: node-role.kubernetes.io/master
+                    operator: Exists
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: file-integrity-operator-scan-result
+        spec:
+          remediationAction: inform # will be overridden by remediationAction in parent policy
+          severity: high
+          object-templates:
+            - complianceType: mustnothave
+              objectDefinition:
+                apiVersion: fileintegrity.openshift.io/v1alpha1
+                kind: FileIntegrityNodeStatus
+                metadata:
+                  namespace: openshift-file-integrity
+                results:
+                - condition: Failed

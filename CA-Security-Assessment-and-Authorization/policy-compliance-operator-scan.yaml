@@ -1,0 +1,75 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-comp-operator-scan
+  annotations:
+    policy.open-cluster-management.io/standards: NIST SP 800-53
+    policy.open-cluster-management.io/categories: CA Security Assessment and Authorization
+    policy.open-cluster-management.io/controls: CA-2 Security Assessments, CA-7 Continuous Monitoring
+spec:
+  remediationAction: inform
+  disabled: true
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: comp-operator-scan-settings
+        spec:
+          remediationAction: inform # will be overridden by remediationAction in parent policy
+          severity: high
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: compliance.openshift.io/v1alpha1
+                kind: ScanSettingBinding
+                metadata:
+                  name: moderate
+                  namespace: openshift-compliance
+                profiles:
+                - apiGroup: compliance.openshift.io/v1alpha1
+                  kind: Profile
+                  name: ocp4-moderate
+                - apiGroup: compliance.openshift.io/v1alpha1
+                  kind: Profile
+                  name: ocp4-moderate-node
+                settingsRef:
+                  apiGroup: compliance.openshift.io/v1alpha1
+                  kind: ScanSetting
+                  name: default
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: comp-operator-scan-finish
+        spec:
+          remediationAction: inform # will be overridden by remediationAction in parent policy
+          severity: high
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: compliance.openshift.io/v1alpha1
+                kind: ComplianceSuite
+                metadata:
+                  name: moderate
+                  namespace: openshift-compliance
+                status:
+                  phase: DONE
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: comp-operator-scan-result
+        spec:
+          remediationAction: inform # will be overridden by remediationAction in parent policy
+          severity: high
+          object-templates:
+            - complianceType: mustnothave
+              objectDefinition:
+                apiVersion: compliance.openshift.io/v1alpha1
+                kind: ComplianceCheckResult
+                metadata:
+                  namespace: openshift-compliance
+                  labels:
+                    compliance.openshift.io/check-status: FAIL
+                    compliance.openshift.io/suite: moderate
