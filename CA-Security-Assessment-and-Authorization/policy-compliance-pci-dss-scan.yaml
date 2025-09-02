@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-comp-operator-scan
+  name: policy-pci-dss-scan
   annotations:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CA Security Assessment and Authorization
@@ -14,9 +14,9 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: comp-operator-scan-settings
+          name: compliance-pci-dss-settings
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform
           severity: high
           object-templates:
             - complianceType: musthave
@@ -24,15 +24,15 @@ spec:
                 apiVersion: compliance.openshift.io/v1alpha1
                 kind: ScanSettingBinding
                 metadata:
-                  name: moderate
+                  name: pci-dss
                   namespace: openshift-compliance
                 profiles:
-                - apiGroup: compliance.openshift.io/v1alpha1
-                  kind: Profile
-                  name: ocp4-moderate
-                - apiGroup: compliance.openshift.io/v1alpha1
-                  kind: Profile
-                  name: ocp4-moderate-node
+                  - apiGroup: compliance.openshift.io/v1alpha1
+                    kind: Profile
+                    name: ocp4-pci-dss
+                  - apiGroup: compliance.openshift.io/v1alpha1
+                    kind: Profile
+                    name: ocp4-pci-dss-node
                 settingsRef:
                   apiGroup: compliance.openshift.io/v1alpha1
                   kind: ScanSetting
@@ -41,17 +41,17 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: comp-operator-scan-finish
+          name: compliance-suite-pci-dss
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform
           severity: high
           object-templates:
-            - complianceType: musthave
+            - complianceType: musthave # this template checks if scan has completed by checking the status field
               objectDefinition:
                 apiVersion: compliance.openshift.io/v1alpha1
                 kind: ComplianceSuite
                 metadata:
-                  name: moderate
+                  name: pci-dss
                   namespace: openshift-compliance
                 status:
                   phase: DONE
@@ -59,9 +59,9 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: comp-operator-scan-result
+          name: compliance-suite-pci-dss-results
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform
           severity: high
           object-templates:
             - complianceType: mustnothave
@@ -72,4 +72,4 @@ spec:
                   namespace: openshift-compliance
                   labels:
                     compliance.openshift.io/check-status: FAIL
-                    compliance.openshift.io/suite: moderate
+                    compliance.openshift.io/suite: pci-dss
