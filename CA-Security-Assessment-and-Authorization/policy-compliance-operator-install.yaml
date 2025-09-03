@@ -6,6 +6,7 @@ metadata:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CA Security Assessment and Authorization
     policy.open-cluster-management.io/controls: CA-2 Security Assessments, CA-7 Continuous Monitoring
+    policy.open-cluster-management.io/description: Deploys and ensures the presence of the OpenShift Compliance Operator. This policy validates that the openshift-compliance namespace, operator group, catalog source, and subscription for the Compliance Operator are properly configured. The Compliance Operator provides automated compliance scans and continuous monitoring against security benchmarks
 spec:
   remediationAction: inform
   disabled: true

@@ -6,6 +6,7 @@ metadata:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: SC System and Communications Protection
     policy.open-cluster-management.io/controls: SC-1 SYSTEM AND COMMUNICATIONS PROTECTION POLICY AND PROCEDURES
+    policy.open-cluster-management.io/description: Ensures that the default kubeadmin user secret is removed from the cluster to strengthen access control and reduce security risks. The kubeadmin account is only intended for initial cluster setup, and its removal enforces compliance with security best practices by eliminating default administrative credentials.
 spec:
   remediationAction: inform
   disabled: true

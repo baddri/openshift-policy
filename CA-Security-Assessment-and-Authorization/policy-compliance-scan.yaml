@@ -6,6 +6,7 @@ metadata:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CA Security Assessment and Authorization
     policy.open-cluster-management.io/controls: CA-2 Security Assessments, CA-7 Continuous Monitoring
+    policy.open-cluster-management.io/description: Runs and validates the OpenShift Compliance Operator’s moderate compliance scan. Ensures the moderate scan settings are applied, the compliance suite completes successfully, and no failed check results remain.
 spec:
   remediationAction: inform
   disabled: true

@@ -6,6 +6,7 @@ metadata:
     policy.open-cluster-management.io/standards: NIST-CSF
     policy.open-cluster-management.io/categories: CM Configuration Management
     policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+    policy.open-cluster-management.io/description: Detects namespaces stuck in a Terminating state, which can indicate incomplete resource cleanup or finalizer issues. This policy helps administrators quickly identify and address potential configuration or operational problems that may prevent proper namespace deletion.
 spec:
   remediationAction: inform
   disabled: true

@@ -6,6 +6,7 @@ metadata:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: AU Audit and Accountability
     policy.open-cluster-management.io/controls: AU-3 Content of Audit Records
+    policy.open-cluster-management.io/description: Ensures that OpenShift API server audit logging is configured to capture sufficient detail in audit records. This policy enforces custom audit profiles for both system:authenticated:oauth and system:authenticated groups with WriteRequestBodies, and sets the cluster audit profile to Default. The goal is to meet NIST SP 800-53 AU-3 requirements by providing detailed audit logs to support accountability, traceability, and forensic analysis.
 spec:
   remediationAction: inform
   disabled: true

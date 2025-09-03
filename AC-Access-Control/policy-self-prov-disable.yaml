@@ -6,6 +6,7 @@ metadata:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: AC Access Control
     policy.open-cluster-management.io/controls: AC-6 Least Privilege
+    policy.open-cluster-management.io/description: Restricts and disables the default self-provisioner ClusterRoleBinding to prevent ordinary users from creating new projects or namespaces without administrative approval. By enforcing mustonlyhave with empty subjects, this policy ensures that no user or group is bound to the self-provisioner role. This reduces the risk of uncontrolled namespace sprawl and enforces least privilege
 spec:
   remediationAction: inform
   disabled: true

@@ -6,6 +6,7 @@ metadata:
     policy.open-cluster-management.io/categories: SC System and Communications Protection
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/controls: SC-4 Information In Shared Resources
+    policy.open-cluster-management.io/description: Prevents the creation of privileged pods in the cluster by enforcing a custom Security Context Constraint (SCC) that disables privileged containers and privilege escalation. This policy ensures workloads run with the least privileges required, protecting sensitive resources and reducing attack surfaces.
 spec:
   remediationAction: inform
   disabled: true

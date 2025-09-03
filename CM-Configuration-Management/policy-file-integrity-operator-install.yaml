@@ -6,6 +6,7 @@ metadata:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CM Configuration Management
     policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+    policy.open-cluster-management.io/description: Ensures that the File Integrity Operator is deployed and configured in the openshift-file-integrity namespace. This policy installs the operator, creates a FileIntegrity custom resource to enable file integrity monitoring on worker nodes, and validates that no node reports failed integrity checks.
 spec:
   remediationAction: inform
   disabled: true
