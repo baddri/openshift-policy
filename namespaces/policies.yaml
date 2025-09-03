@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: policies
+  labels:
+    kubernetes.io/metadata.name: policies
+  annotations:
+    rgocd.argoproj.io/sync-wave: "0"

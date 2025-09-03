@@ -2,6 +2,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
   name: policy-etcd-encryption
+  namespace: policies
   annotations:
     policy.open-cluster-management.io/standards: NIST 800-53, NIST-CSF
     policy.open-cluster-management.io/categories: CM Configuration Management, PR.IP Information Protection Processes and Procedures
