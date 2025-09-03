@@ -1,0 +1,17 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: policy-placement-global-binding-all
+  namespace: policies
+placementRef:
+  apiGroup: cluster.open-cluster-management.io
+  kind: Placement
+  name: policy-placement-global
+subjects:
+  - apiGroup: policy.open-cluster-management.io
+    kind: Policy
+    name: policy-terminating-namespace-check
+  - apiGroup: policy.open-cluster-management.io
+    kind: Policy
+    name: policy-self-provisioner-disable
+  # TODO: add others policies
