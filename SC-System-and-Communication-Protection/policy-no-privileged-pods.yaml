@@ -29,5 +29,5 @@ spec:
                 metadata:
                   name: no-privileged-container-scc
                 priority: 10 # make this scc win over privileged scc
-                allowPrivilegedContainer: true
-                allowPrivilegeEscalation: true
+                allowPrivilegedContainer: false
+                allowPrivilegeEscalation: false
