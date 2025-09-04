@@ -1,7 +1,7 @@
 apiVersion: cluster.open-cluster-management.io/v1beta1
 kind: Placement
 metadata:
-  name: policy-placement-global
+  name: policy-placement-openshift
   namespace: policies
 spec:
   clusterSets:
@@ -10,5 +10,6 @@ spec:
     - requiredClusterSelector:
         labelSelector:
           matchLabels:
+            vendor: OpenShift
             feature.open-cluster-management.io/addon-governance-policy-framework: available
             feature.open-cluster-management.io/addon-config-policy-controller: available

@@ -1,13 +1,13 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: policy-placement-binding-global
+  name: policy-placement-binding-openshift
   namespace: policies
 placementRef:
   apiGroup: cluster.open-cluster-management.io
   kind: Placement
-  name: policy-placement-global
+  name: policy-placement-openshift
 subjects:
   - apiGroup: policy.open-cluster-management.io
     kind: PolicySet
-    name: policyset-global-hardening
+    name: policyset-openshift-hardening

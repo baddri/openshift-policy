@@ -1,0 +1,15 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  name: policyset-openshift-hardening
+  namespace: policies
+spec:
+  description: "PolicySet to group best practice for OpenShift cluster"
+  policies:
+    - policy-comp-operator
+    - policy-pci-dss-scan
+    - policy-compliance-moderate-scan
+    - policy-fips-compliance
+    - policy-file-integrity-operator
+    - policy-file-integrity-operator-scan
+    - policy-cluster-operator-check

@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/your-repo.git
+    repoURL: https://github.com/baddri/openshift-policy.git
     targetRevision: main
     path: namespaces
   destination:
@@ -26,9 +26,29 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/your-repo.git
+    repoURL: https://github.com/baddri/openshift-policy.git
     targetRevision: main
     path: policies
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: policy-policysets
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/baddri/openshift-policy.git
+    targetRevision: main
+    path: policysets
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-gitops
@@ -46,7 +66,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/your-repo.git
+    repoURL: https://github.com/baddri/openshift-policy.git
     targetRevision: main
     path: placements
   destination:
@@ -66,7 +86,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/your-repo.git
+    repoURL: https://github.com/baddri/openshift-policy.git
     targetRevision: main
     path: bindings
   destination:

@@ -1,0 +1,15 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  name: policyset-global-hardening
+  namespace: policies
+spec:
+  description: "PolicySet to group best practice for OpenShift cluster"
+  policies:
+    - policy-disalowed-roles-wildcard
+    - policy-self-provisioner-disable
+    - policy-config-audit
+    - policy-etcd-encryption
+    - policy-kubeadmin-remove
+    - policy-terminating-namespace-check
+    # - policy-no-previleged-pods
