@@ -63,8 +63,7 @@ spec:
                   name: file-integrity-operator
                   namespace: openshift-file-integrity
                 spec:
-                  # TODO: review this
-                  # channel: release-0.1
+                  channel: stable
                   # installPlanApproval: Automatic
                   name: file-integrity-operator
                   source: redhat-operators

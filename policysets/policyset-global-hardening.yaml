@@ -6,10 +6,10 @@ metadata:
 spec:
   description: "PolicySet to group best practice for OpenShift cluster"
   policies:
-    - policy-disalowed-roles-wildcard
-    - policy-self-provisioner-disable
-    - policy-config-audit
-    - policy-etcd-encryption
-    - policy-kubeadmin-remove
     - policy-terminating-namespace-check
+    # - policy-config-audit
+    # - policy-etcd-encryption
+    # - policy-self-provisioner-disable
+    # - policy-kubeadmin-remove
+    # - policy-disalowed-roles-wildcard
     # - policy-no-previleged-pods

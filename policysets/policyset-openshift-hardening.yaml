@@ -6,10 +6,10 @@ metadata:
 spec:
   description: "PolicySet to group best practice for OpenShift cluster"
   policies:
-    - policy-comp-operator
-    - policy-pci-dss-scan
-    - policy-compliance-moderate-scan
-    - policy-fips-compliance
-    - policy-file-integrity-operator
-    - policy-file-integrity-operator-scan
     - policy-cluster-operator-check
+    # - policy-comp-operator
+    # - policy-pci-dss-scan
+    # - policy-compliance-moderate-scan
+    # - policy-file-integrity-operator
+    # - policy-file-integrity-operator-scan
+    # - policy-fips-compliance

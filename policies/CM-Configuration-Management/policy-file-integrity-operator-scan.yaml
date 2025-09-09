@@ -18,7 +18,7 @@ spec:
         metadata:
           name: file-integrity-operator-scan
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform 
           severity: high
           object-templates:
             - complianceType: musthave
@@ -26,8 +26,8 @@ spec:
                 apiVersion: fileintegrity.openshift.io/v1alpha1
                 kind: FileIntegrity
                 metadata:
-                  # TODO: Make sure the name is correct
-                  # name: example-fileintegrity
+                  # TODO: Update name setelah mencoba install operator secara manual
+                  name: file-integrity-suite
                   namespace: openshift-file-integrity
                 spec:
                   config:
@@ -44,7 +44,7 @@ spec:
         metadata:
           name: file-integrity-operator-scan-result
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform
           severity: high
           object-templates:
             - complianceType: mustnothave

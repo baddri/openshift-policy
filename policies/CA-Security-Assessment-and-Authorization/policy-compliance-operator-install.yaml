@@ -18,7 +18,7 @@ spec:
         metadata:
           name: comp-operator-ns
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform
           severity: high
           object-templates:
             - complianceType: musthave
@@ -33,7 +33,7 @@ spec:
         metadata:
           name: comp-operator-catalog-source
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform
           severity: high
           object-templates:
             - complianceType: musthave
@@ -44,20 +44,15 @@ spec:
                   name: compliance-operator
                   namespace: openshift-marketplace
                 spec:
-                  # TODO: check different between these two line
-                  # displayName: Compliance Operator Upstream
-                  # publisher: github.com/openshift/compliance-operator
-                  # sourceType: grpc
-                  # image: quay.io/compliance-operator/compliance-operator-index:latest
                   displayName: Compliance Operator
-                  publisher: github.com/ComplianceAsCode/compliance-operator
+                  # TODO: update publisher, sourceType dan image belakangan setelah dicoba install di sala satu cluster
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
           name: comp-operator-group
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform
           severity: high
           object-templates:
             - complianceType: musthave
@@ -76,7 +71,7 @@ spec:
         metadata:
           name: comp-operator-subscription
         spec:
-          remediationAction: inform # will be overridden by remediationAction in parent policy
+          remediationAction: inform
           severity: high
           object-templates:
             - complianceType: musthave
@@ -87,8 +82,6 @@ spec:
                   name: compliance-operator-sub
                   namespace: openshift-compliance
                 spec:
-                  # channel: alpha
                   channel: stable
                   name: compliance-operator
-                  source: compliance-operator
-                  sourceNamespace: openshift-marketplace
+                  # TODO: update source dan sourceNamespace setelah percobaan install compliance operator

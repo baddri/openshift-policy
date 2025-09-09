@@ -4,7 +4,7 @@ metadata:
   name: policy-pci-dss-scan
   namespace: policies
   annotations:
-    policy.open-cluster-management.io/standards: NIST SP 800-53
+    policy.open-cluster-management.io/standards: NIST SP 800-53, PCI DSS
     policy.open-cluster-management.io/categories: CA Security Assessment and Authorization
     policy.open-cluster-management.io/controls: CA-2 Security Assessments, CA-7 Continuous Monitoring
     policy.open-cluster-management.io/description: Performs and validates PCI-DSS compliance scans using the OpenShift Compliance Operator. This policy ensures that the PCI-DSS scan settings are applied, the compliance suite completes successfully, and no failed check results remain.
